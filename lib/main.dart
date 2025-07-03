@@ -1,3 +1,4 @@
+import 'package:favorite_places/screens/places_screen.dart';
 import 'package:favorite_places/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Melhores Lugares',
       theme: theme,
-      home: const Placeholder(),
+      home: PlacesScreen(),
     );
   }
 }
