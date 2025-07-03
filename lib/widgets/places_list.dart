@@ -1,18 +1,17 @@
+import 'package:favorite_places/models/place_model.dart';
+import 'package:favorite_places/widgets/places_list_item.dart';
 import 'package:flutter/material.dart';
 
-class PlacesList extends StatefulWidget {
-  const PlacesList({super.key});
+class PlacesList extends StatelessWidget {
+  const PlacesList({super.key, required this.places});
 
-  @override
-  State<PlacesList> createState() => _PlacesListState();
-}
+  final List<PlaceModel> places;
 
-class _PlacesListState extends State<PlacesList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (ctx, index) => Placeholder(),
-      itemCount: 2,
+      itemBuilder: (ctx, index) => PlacesListItem(place: places[index]),
+      itemCount: places.length,
     );
   }
 }
