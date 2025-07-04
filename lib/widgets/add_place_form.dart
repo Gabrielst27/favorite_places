@@ -1,5 +1,6 @@
 import 'package:favorite_places/models/place_model.dart';
 import 'package:favorite_places/providers/place_provider.dart';
+import 'package:favorite_places/widgets/image_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,6 +38,8 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Column(
           children: [
+            ImageInput(),
+            const SizedBox(height: 16),
             TextFormField(
               style: Theme.of(context).textTheme.bodyLarge,
               decoration: const InputDecoration(labelText: 'Nome'),
@@ -57,7 +60,7 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
                 );
               },
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () => _submit(ref),
               child: Row(

@@ -17,6 +17,7 @@ final theme = ThemeData().copyWith(
     labelStyle: GoogleFonts.ubuntuCondensed(
       color: darkColorScheme.surfaceBright,
       fontWeight: FontWeight.bold,
+      fontSize: 16,
     ),
     focusedBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: darkColorScheme.primary),
