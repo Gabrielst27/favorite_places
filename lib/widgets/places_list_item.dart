@@ -9,7 +9,7 @@ class PlacesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(place.name, style: Theme.of(context).textTheme.titleMedium),
+      title: Text(place.name, style: Theme.of(context).textTheme.bodyMedium),
     );
   }
 }

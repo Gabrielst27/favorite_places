@@ -1,4 +1,5 @@
 import 'package:favorite_places/models/place_model.dart';
+import 'package:favorite_places/screens/add_place_screen.dart';
 import 'package:favorite_places/widgets/places_list.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,16 @@ class PlacesScreen extends StatefulWidget {
 class _PlacesScreenState extends State<PlacesScreen> {
   final List<PlaceModel> _places = [];
 
+  void _addPlace() async {
+    final place = await Navigator.of(context).push<PlaceModel>(
+      MaterialPageRoute(builder: (context) => AddPlaceScreen()),
+    );
+    if (place == null) return;
+    setState(() {
+      _places.add(place);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +31,10 @@ class _PlacesScreenState extends State<PlacesScreen> {
           'Seus Lugares',
           style: Theme.of(context).textTheme.titleLarge,
         ),
-        backgroundColor: Theme.of(context).colorScheme.onSurface,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _addPlace,
             icon: Icon(Icons.add),
-            color: Theme.of(context).colorScheme.surfaceBright,
           ),
         ],
       ),
