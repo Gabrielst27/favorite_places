@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:favorite_places/models/place_model.dart';
 import 'package:favorite_places/providers/place_provider.dart';
 import 'package:favorite_places/widgets/image_input.dart';
@@ -16,6 +18,11 @@ class AddPlaceForm extends ConsumerStatefulWidget {
 class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
   final _formKey = GlobalKey<FormState>();
   String _enteredName = '';
+  File? _pickedImage;
+
+  void _pickImage(File image) {
+    _pickedImage = image;
+  }
 
   void _submit(WidgetRef ref) {
     if (!_formKey.currentState!.validate()) {
@@ -24,7 +31,7 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
     _formKey.currentState!.save();
     final newPlace = PlaceModel(
       name: _enteredName,
-      imageUrl: 'testImage',
+      image: _pickedImage ?? File(''),
     );
     ref.read(placesProvider.notifier).addPlace(newPlace);
     widget.onSubmit();
@@ -38,8 +45,6 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Column(
           children: [
-            ImageInput(),
-            const SizedBox(height: 16),
             TextFormField(
               style: Theme.of(context).textTheme.bodyLarge,
               decoration: const InputDecoration(labelText: 'Nome'),
@@ -60,7 +65,11 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
                 );
               },
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 16),
+            ImageInput(
+              onPickImage: _pickImage,
+            ),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => _submit(ref),
               child: Row(
