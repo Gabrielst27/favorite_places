@@ -1,4 +1,3 @@
-import 'package:favorite_places/models/place_model.dart';
 import 'package:favorite_places/widgets/add_place_form.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +9,10 @@ class AddPlaceScreen extends StatefulWidget {
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
-  _savePlace(PlaceModel place) {
+  _savePlace() {
     Navigator.of(
       context,
-    ).pop(place);
+    ).pop();
   }
 
   @override

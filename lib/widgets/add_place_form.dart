@@ -1,20 +1,22 @@
 import 'package:favorite_places/models/place_model.dart';
+import 'package:favorite_places/providers/place_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddPlaceForm extends StatefulWidget {
+class AddPlaceForm extends ConsumerStatefulWidget {
   const AddPlaceForm({super.key, required this.onSubmit});
 
-  final Function(PlaceModel place) onSubmit;
+  final Function() onSubmit;
 
   @override
-  State<AddPlaceForm> createState() => _AddPlaceFormState();
+  ConsumerState<AddPlaceForm> createState() => _AddPlaceFormState();
 }
 
-class _AddPlaceFormState extends State<AddPlaceForm> {
+class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
   final _formKey = GlobalKey<FormState>();
   String _enteredName = '';
 
-  void _submit() {
+  void _submit(WidgetRef ref) {
     if (!_formKey.currentState!.validate()) {
       return;
     }
@@ -24,7 +26,8 @@ class _AddPlaceFormState extends State<AddPlaceForm> {
       name: _enteredName,
       imageUrl: 'testImage',
     );
-    widget.onSubmit(newPlace);
+    ref.read(placesProvider.notifier).addPlace(newPlace);
+    widget.onSubmit();
   }
 
   @override
@@ -57,7 +60,7 @@ class _AddPlaceFormState extends State<AddPlaceForm> {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: _submit,
+              onPressed: () => _submit(ref),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
