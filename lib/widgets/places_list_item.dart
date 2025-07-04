@@ -9,15 +9,26 @@ class PlacesListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(place.name, style: Theme.of(context).textTheme.bodyMedium),
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => PlaceDetailsScreen(place: place),
-          ),
-        );
-      },
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: ListTile(
+        leading: CircleAvatar(
+          radius: 28,
+          backgroundImage: FileImage(place.image),
+        ),
+        title: Text(place.name, style: Theme.of(context).textTheme.bodyMedium),
+        trailing: Icon(
+          Icons.navigate_next,
+          color: Theme.of(context).colorScheme.surfaceBright,
+        ),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => PlaceDetailsScreen(place: place),
+            ),
+          );
+        },
+      ),
     );
   }
 }
