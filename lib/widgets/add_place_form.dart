@@ -22,7 +22,6 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
     }
     _formKey.currentState!.save();
     final newPlace = PlaceModel(
-      id: 'testId',
       name: _enteredName,
       imageUrl: 'testImage',
     );
