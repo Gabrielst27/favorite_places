@@ -15,7 +15,7 @@ final theme = ThemeData().copyWith(
   ),
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: GoogleFonts.ubuntuCondensed(
-      color: darkColorScheme.surfaceBright,
+      color: darkColorScheme.primaryContainer,
       fontWeight: FontWeight.bold,
       fontSize: 16,
     ),
@@ -23,7 +23,7 @@ final theme = ThemeData().copyWith(
       borderSide: BorderSide(color: darkColorScheme.primary),
     ),
     enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: darkColorScheme.surfaceBright),
+      borderSide: BorderSide(color: darkColorScheme.primaryContainer),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -35,18 +35,26 @@ final theme = ThemeData().copyWith(
       ),
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor: WidgetStateProperty.all(
+        darkColorScheme.primaryContainer,
+      ),
+      iconColor: WidgetStateProperty.all(darkColorScheme.primary),
+    ),
+  ),
   textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
     bodyLarge: GoogleFonts.ubuntuCondensed(
       fontSize: 24,
-      color: darkColorScheme.surfaceBright,
+      color: darkColorScheme.primaryContainer,
     ),
     bodyMedium: GoogleFonts.ubuntuCondensed(
       fontSize: 20,
-      color: darkColorScheme.surfaceBright,
+      color: darkColorScheme.primaryContainer,
     ),
     bodySmall: GoogleFonts.ubuntuCondensed(
       fontSize: 16,
-      color: darkColorScheme.surfaceBright,
+      color: darkColorScheme.primaryContainer,
     ),
     displayLarge: GoogleFonts.ubuntuCondensed(
       color: darkColorScheme.surfaceBright,
