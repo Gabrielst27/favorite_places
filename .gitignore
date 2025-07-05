@@ -12,6 +12,9 @@
 .swiftpm/
 migrate_working_dir/
 
+# Environment variables
+environment.dart
+
 # IntelliJ related
 *.iml
 *.ipr

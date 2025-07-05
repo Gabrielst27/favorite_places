@@ -1,3 +1,5 @@
+import 'package:favorite_places/api/nominatim/nominatim_service.dart';
+import 'package:favorite_places/models/address_model.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -11,6 +13,7 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   LocationData? _pickedLocation;
   bool _isLoadingLocation = false;
+  AddressModel? _address;
 
   void _getCurrentLocation() async {
     setState(() {
@@ -36,6 +39,17 @@ class _LocationInputState extends State<LocationInput> {
       _pickedLocation = locationData;
       _isLoadingLocation = false;
     });
+    final locationService = NominatimService();
+    final address = await locationService.getLocationByCoords(
+      _pickedLocation!.latitude!,
+      _pickedLocation!.longitude!,
+    );
+    if (address == null) {
+      return;
+    }
+    setState(() {
+      _address = address;
+    });
   }
 
   @override
@@ -49,9 +63,18 @@ class _LocationInputState extends State<LocationInput> {
     if (_isLoadingLocation) {
       content = CircularProgressIndicator();
     }
-    if (_pickedLocation != null) {
+    if (_address != null) {
       content = Center(
-        child: Text('cu'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Rua: ${_address!.road}'),
+            Text('Região: ${_address!.suburb}'),
+            Text('Cidade: ${_address!.city}'),
+            Text('Estado: ${_address!.state}'),
+          ],
+        ),
       );
     }
     return Column(
