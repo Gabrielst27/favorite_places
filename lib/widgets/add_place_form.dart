@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:favorite_places/models/address_model.dart';
 import 'package:favorite_places/models/place_model.dart';
 import 'package:favorite_places/providers/place_provider.dart';
 import 'package:favorite_places/widgets/image_input.dart';
@@ -20,19 +21,39 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
   final _formKey = GlobalKey<FormState>();
   String _enteredName = '';
   File? _pickedImage;
+  AddressModel? _pickedAddress;
 
   void _pickImage(File image) {
     _pickedImage = image;
+  }
+
+  void _pickAddress(AddressModel address) {
+    _pickedAddress = address;
   }
 
   void _submit(WidgetRef ref) {
     if (!_formKey.currentState!.validate()) {
       return;
     }
+    if (_pickedImage == null) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Por favor, adicione uma imagem')),
+      );
+      return;
+    }
+    if (_pickedAddress == null) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Por favor, adicione a localização')),
+      );
+      return;
+    }
     _formKey.currentState!.save();
     final newPlace = PlaceModel(
       name: _enteredName,
-      image: _pickedImage ?? File(''),
+      image: _pickedImage!,
+      address: _pickedAddress!,
     );
     ref.read(placesProvider.notifier).addPlace(newPlace);
     widget.onSubmit();
@@ -71,7 +92,9 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
               onPickImage: _pickImage,
             ),
             const SizedBox(height: 16),
-            LocationInput(),
+            LocationInput(
+              onPickAddress: _pickAddress,
+            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () => _submit(ref),

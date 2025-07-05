@@ -19,6 +19,19 @@ class PlacesListItem extends StatelessWidget {
             backgroundImage: FileImage(place.image),
           ),
           title: Text(place.name, style: Theme.of(context).textTheme.bodyLarge),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                place.address.road,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              Text(
+                '${place.address.suburb} - ${place.address.city}',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
           trailing: Icon(
             Icons.navigate_next,
             color: Theme.of(context).colorScheme.surfaceBright,

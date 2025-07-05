@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({super.key});
+  const LocationInput({super.key, required this.onPickAddress});
+
+  final void Function(AddressModel address) onPickAddress;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -37,7 +39,6 @@ class _LocationInputState extends State<LocationInput> {
     LocationData locationData = await location.getLocation();
     setState(() {
       _pickedLocation = locationData;
-      _isLoadingLocation = false;
     });
     final locationService = NominatimService();
     final address = await locationService.getLocationByCoords(
@@ -45,11 +46,14 @@ class _LocationInputState extends State<LocationInput> {
       _pickedLocation!.longitude!,
     );
     if (address == null) {
+      _isLoadingLocation = false;
       return;
     }
     setState(() {
       _address = address;
+      _isLoadingLocation = false;
     });
+    widget.onPickAddress(address);
   }
 
   @override
