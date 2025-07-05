@@ -13,6 +13,7 @@ final theme = ThemeData().copyWith(
     backgroundColor: darkColorScheme.onSurface,
     foregroundColor: darkColorScheme.surfaceBright,
   ),
+  cardTheme: CardThemeData(color: darkColorScheme.primary),
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: GoogleFonts.ubuntuCondensed(
       color: darkColorScheme.primaryContainer,
@@ -45,15 +46,15 @@ final theme = ThemeData().copyWith(
   ),
   textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
     bodyLarge: GoogleFonts.ubuntuCondensed(
-      fontSize: 24,
-      color: darkColorScheme.primaryContainer,
-    ),
-    bodyMedium: GoogleFonts.ubuntuCondensed(
       fontSize: 20,
       color: darkColorScheme.primaryContainer,
     ),
-    bodySmall: GoogleFonts.ubuntuCondensed(
+    bodyMedium: GoogleFonts.ubuntuCondensed(
       fontSize: 16,
+      color: darkColorScheme.primaryContainer,
+    ),
+    bodySmall: GoogleFonts.ubuntuCondensed(
+      fontSize: 14,
       color: darkColorScheme.primaryContainer,
     ),
     displayLarge: GoogleFonts.ubuntuCondensed(

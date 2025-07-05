@@ -34,7 +34,10 @@ class _ImageInputState extends State<ImageInput> {
     Widget content = TextButton.icon(
       onPressed: _takePicture,
       icon: Icon(Icons.camera),
-      label: Text('Tirar foto'),
+      label: Text(
+        'Tirar foto',
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
     if (_selectedImage != null) {
       content = GestureDetector(
