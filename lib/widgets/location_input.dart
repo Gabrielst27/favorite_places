@@ -1,6 +1,6 @@
 import 'package:favorite_places/api/nominatim/nominatim_service.dart';
 import 'package:favorite_places/environment.dart';
-import 'package:favorite_places/models/address_model.dart';
+import 'package:favorite_places/models/place_location_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -9,7 +9,7 @@ import 'package:location/location.dart';
 class LocationInput extends StatefulWidget {
   const LocationInput({super.key, required this.onPickAddress});
 
-  final void Function(AddressModel address) onPickAddress;
+  final void Function(PlaceLocationModel address) onPickAddress;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -18,7 +18,7 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   LocationData? _pickedLocation;
   bool _isLoadingLocation = false;
-  AddressModel? _address;
+  PlaceLocationModel? _address;
 
   void _getCurrentLocation() async {
     setState(() {

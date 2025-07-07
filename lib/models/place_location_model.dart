@@ -1,4 +1,6 @@
-class AddressModel {
+class PlaceLocationModel {
+  final double latitude;
+  final double longitude;
   final String road;
   final String quarter;
   final String suburb;
@@ -8,7 +10,7 @@ class AddressModel {
   final String country;
   final String iso31662lvl4;
 
-  AddressModel({
+  PlaceLocationModel({
     required this.road,
     required this.quarter,
     required this.suburb,
@@ -17,5 +19,7 @@ class AddressModel {
     required this.postcode,
     required this.country,
     required this.iso31662lvl4,
+    required this.latitude,
+    required this.longitude,
   });
 }

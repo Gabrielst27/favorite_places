@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:favorite_places/models/address_model.dart';
+import 'package:favorite_places/models/place_location_model.dart';
 import 'package:uuid/uuid.dart';
 
 class PlaceModel {
@@ -10,5 +10,5 @@ class PlaceModel {
   final String id;
   final String name;
   final File image;
-  final AddressModel address;
+  final PlaceLocationModel address;
 }

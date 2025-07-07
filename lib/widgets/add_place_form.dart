@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:favorite_places/models/address_model.dart';
+import 'package:favorite_places/models/place_location_model.dart';
 import 'package:favorite_places/models/place_model.dart';
 import 'package:favorite_places/providers/place_provider.dart';
 import 'package:favorite_places/widgets/image_input.dart';
@@ -21,13 +21,13 @@ class _AddPlaceFormState extends ConsumerState<AddPlaceForm> {
   final _formKey = GlobalKey<FormState>();
   String _enteredName = '';
   File? _pickedImage;
-  AddressModel? _pickedAddress;
+  PlaceLocationModel? _pickedAddress;
 
   void _pickImage(File image) {
     _pickedImage = image;
   }
 
-  void _pickAddress(AddressModel address) {
+  void _pickAddress(PlaceLocationModel address) {
     _pickedAddress = address;
   }
 
