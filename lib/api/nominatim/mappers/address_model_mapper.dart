@@ -10,6 +10,7 @@ class AddressModelMapper {
       state: data['state'],
       postcode: data['postcode'],
       country: data['country'],
+      iso31662lvl4: data['ISO3166-2-lvl4'],
     );
   }
 }

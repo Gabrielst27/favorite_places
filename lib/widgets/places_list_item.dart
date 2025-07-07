@@ -27,7 +27,11 @@ class PlacesListItem extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                '${place.address.suburb} - ${place.address.city}',
+                '${place.address.suburb}, ${place.address.city}',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              Text(
+                '${place.address.state}, ${place.address.country}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],

@@ -1,6 +1,9 @@
 import 'package:favorite_places/api/nominatim/nominatim_service.dart';
+import 'package:favorite_places/environment.dart';
 import 'package:favorite_places/models/address_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 
 class LocationInput extends StatefulWidget {
@@ -41,7 +44,7 @@ class _LocationInputState extends State<LocationInput> {
       _pickedLocation = locationData;
     });
     final locationService = NominatimService();
-    final address = await locationService.getLocationByCoords(
+    final address = await locationService.getReverseLocation(
       _pickedLocation!.latitude!,
       _pickedLocation!.longitude!,
     );
@@ -69,14 +72,34 @@ class _LocationInputState extends State<LocationInput> {
     }
     if (_address != null) {
       content = Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: FlutterMap(
+          options: MapOptions(
+            initialCenter: LatLng(
+              _pickedLocation!.latitude!,
+              _pickedLocation!.longitude!,
+            ),
+            initialZoom: 15,
+          ),
           children: [
-            Text('Rua: ${_address!.road}'),
-            Text('Região: ${_address!.suburb}'),
-            Text('Cidade: ${_address!.city}'),
-            Text('Estado: ${_address!.state}'),
+            TileLayer(
+              urlTemplate: openStreetMapUrlTemplate,
+              userAgentPackageName: openStreetMapUserAgentPackageName,
+            ),
+            MarkerLayer(
+              markers: [
+                Marker(
+                  point: LatLng(
+                    _pickedLocation!.latitude!,
+                    _pickedLocation!.longitude!,
+                  ),
+                  child: Icon(
+                    Icons.location_pin,
+                    color: Colors.red,
+                    size: 24,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );

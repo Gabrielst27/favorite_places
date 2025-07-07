@@ -6,7 +6,7 @@ import 'package:favorite_places/models/address_model.dart';
 import 'package:http/http.dart' as http;
 
 class NominatimService {
-  Future<AddressModel?> getLocationByCoords(
+  Future<AddressModel?> getReverseLocation(
     double latitude,
     double longitude,
   ) async {
@@ -24,6 +24,7 @@ class NominatimService {
         return null;
       }
       final Map<String, dynamic> data = json.decode(response.body);
+      print(response.body);
       final address = AddressModelMapper.toModel(data['address']);
       return address;
     } catch (error) {
