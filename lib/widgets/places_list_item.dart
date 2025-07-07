@@ -10,7 +10,7 @@ class PlacesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Card(
         child: ListTile(
           contentPadding: EdgeInsets.all(16),
@@ -18,7 +18,10 @@ class PlacesListItem extends StatelessWidget {
             radius: 28,
             backgroundImage: FileImage(place.image),
           ),
-          title: Text(place.name, style: Theme.of(context).textTheme.bodyLarge),
+          title: Text(
+            place.name,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

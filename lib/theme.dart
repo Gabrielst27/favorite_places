@@ -76,14 +76,17 @@ final theme = ThemeData().copyWith(
       color: darkColorScheme.surfaceBright,
     ),
     titleLarge: GoogleFonts.ubuntuCondensed(
+      fontSize: 24,
       color: darkColorScheme.surfaceBright,
       fontWeight: FontWeight.bold,
     ),
     titleMedium: GoogleFonts.ubuntuCondensed(
+      fontSize: 20,
       color: darkColorScheme.surfaceBright,
       fontWeight: FontWeight.bold,
     ),
     titleSmall: GoogleFonts.ubuntuCondensed(
+      fontSize: 16,
       color: darkColorScheme.surfaceBright,
       fontWeight: FontWeight.bold,
     ),

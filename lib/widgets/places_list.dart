@@ -9,9 +9,12 @@ class PlacesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (ctx, index) => PlacesListItem(place: places[index]),
-      itemCount: places.length,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: ListView.builder(
+        itemBuilder: (ctx, index) => PlacesListItem(place: places[index]),
+        itemCount: places.length,
+      ),
     );
   }
 }
