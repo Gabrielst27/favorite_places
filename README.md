@@ -1,16 +1,14 @@
-# favorite_places
+# Sobre
 
-A new Flutter project.
+Um projeto no qual o usuário pode criar uma lista de lugares, acessando **recursos nativos** do dispositivo como **câmera**, **localização** e **memória** do dispositivo para salvar os lugares. Além disso, são consumidas as API's **Nominatim** e **Openstreet Map** para renderizar um web map mostrando a localização escolhida pelo usuário, de acordo com a latitude e longitude enviadas ao acessar ao localização do dispositivo.
 
-## Getting Started
+Projeto inteiramente Open Source, desenvolvido para fins de aprendizagem em **Flutter**.
 
-This project is a starting point for a Flutter application.
+## Importante
 
-A few resources to get you started if this is your first Flutter project:
+Para que o projeto funcione, é preciso criar o arquivo environment.dart, contendo as variáveis **nominatimUrl**, **openStreetMapUrlTemplate** e **openStreetMapUserAgentPackageName**.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Para saber mais sobre as API's consumidas, consulte as seguintes documentações:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Nominatim documentation](https://nominatim.org/release-docs/latest/)
+- [flutter_map documentation](https://docs.flutter.dev/cookbook)
