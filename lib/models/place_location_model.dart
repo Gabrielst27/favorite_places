@@ -22,4 +22,9 @@ class PlaceLocationModel {
     required this.latitude,
     required this.longitude,
   });
+
+  @override
+  String toString() {
+    return '$road, $quarter, $suburb, $city, $state, $postcode, $country, $iso31662lvl4';
+  }
 }
